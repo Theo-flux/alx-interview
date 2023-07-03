@@ -2,7 +2,6 @@
 """
 0-pascal's triangle
 """
-from math import factorial
 
 
 def pascal_triangle(num):
@@ -22,9 +21,11 @@ def pascal_triangle(num):
     if num < 0:
         return a
 
-    for n in range(num):
+    for n in range(1, num+1):
+        c = 1
         e = []
-        for r in range(n+1):
-            e.append(factorial(n)//(factorial(n-r)*factorial(r)))
+        for r in range(1, n+1):
+            e.append(c)
+            c = c*(n-r)//r
         a.append(e)
     return a
