@@ -4,17 +4,13 @@ min_operations file
 """
 
 
-def copy_all(file_content: str) -> str:
-    return file_content
-
-
 def minOperations(n) -> int:
     file_content = 'H'
     min_op = 0
     flag = True
 
     while len(file_content) < n:
-        copyAll = copy_all(file_content)
+        copyAll = file_content
         min_op += 1
 
         if len(copyAll + file_content) < n:
