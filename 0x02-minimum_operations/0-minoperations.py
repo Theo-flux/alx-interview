@@ -5,8 +5,13 @@ min_operations file
 
 
 def minOperations(n) -> int:
-    file_content = 'H'
     min_op = 0
+
+    if n < 2:
+        return min_op
+
+    file_content = 'H'
+
 
     while len(file_content) < n:
         copyAll = file_content
