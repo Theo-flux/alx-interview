@@ -17,11 +17,11 @@ def canUnlockAll(boxes: List[Union[List[int], List]]) -> bool:
     """
     unlocked = set()
 
-    for box_id, box in enumerate(boxes):
-        if len(box) == 0 or box_id == 0:
-            unlocked.add(box_id)
+    for id, box in enumerate(boxes):
+        if len(box) == 0 or id == 0:
+            unlocked.add(id)
         for key in box:
-            if key < len(boxes) and key != box_id:
+            if key < len(boxes) and key != id:
                 unlocked.add(key)
         if len(unlocked) == len(boxes):
             return True
