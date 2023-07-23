@@ -19,10 +19,20 @@ my_status_hash = {
     500: 0
 }
 file_size = 0
-pattern = r'^(\d+\.\d+\.\d+\.\d+) - \[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+)\] "(\S+ \S+ \S+)" (\d{3}) (\d+)$'
+pattern = (
+    r'''^(\d+\.\d+\.\d+\.\d+) - \[(\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d+)\] "(\S+ \S+ \S+)" (\d{3}) (\d+)$'''
+)
 
 
 def matchLine(arg: str) -> List[Any]:
+    """_summary_
+
+    Args:
+        arg (str): _description_
+
+    Returns:
+        List[Any]: _description_
+    """
     if re.match(pattern, arg):
         arg_list = arg.split()
 
@@ -33,8 +43,6 @@ def matchLine(arg: str) -> List[Any]:
 for line in sys.stdin:
     if "Exit" == line.rstrip():
         break
-    # print(matchLine(line))
-    # print(line)
 
     arg_list = matchLine(line)
 
