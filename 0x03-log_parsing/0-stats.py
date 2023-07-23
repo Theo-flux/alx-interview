@@ -40,20 +40,25 @@ def matchLine(arg: str) -> List[Any]:
     return []
 
 
-for line in sys.stdin:
-    if "Exit" == line.rstrip():
-        break
+try:
+    for line in sys.stdin:
+        arg_list = matchLine(line)
 
-    arg_list = matchLine(line)
+        if len(arg_list) == 2:
+            file_size += arg_list[1]
+            my_status_hash[int(arg_list[0])] += 1
 
-    if len(arg_list) == 2:
-        file_size += arg_list[1]
-        my_status_hash[int(arg_list[0])] += 1
+        if i % 10 == 0:
+            print(f"File size: {file_size}")
+            for k, v in my_status_hash.items():
+                if v:
+                    print(f"{k}: {v}")
 
-    if i % 10 == 0:
-        print(f"File size: {file_size}")
-        for k, v in my_status_hash.items():
-            if v:
-                print(f"{k}: {v}")
-
-    i += 1
+        i += 1
+except Exception as err:
+    pass
+finally:
+    print(f"File size: {file_size}")
+    for k, v in sorted(my_status_hash.items()):
+        if v:
+            print(f"{k}: {v}")
