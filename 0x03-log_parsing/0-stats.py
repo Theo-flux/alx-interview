@@ -18,20 +18,29 @@ methods = {
 total_size = 0
 counter = 0
 
+try:
+    for line in sys.stdin:
+        line_list = line.split(" ")
+        if len(line_list) > 4:
+            status = line_list[-2]
+            size = int(line_list[-1])
+            if status in methods.keys():
+                methods[status] += 1
+            total_size += size
+            counter += 1
 
-for line in sys.stdin:
-    line_list = line.split(" ")
-    if len(line_list) > 4:
-        code = line_list[-2]
-        size = int(line_list[-1])
-        if code in methods.keys():
-            methods[code] += 1
-        total_size += size
-        counter += 1
+        if counter == 10:
+            counter = 0
+            print("File size: {}".format(total_size))
+            for key, value in sorted(methods.items()):
+                if value != 0:
+                    print("{}: {}".format(key, value))
 
-    if counter == 10:
-        counter = 0
-        print("File size: {}".format(total_size))
-        for key, value in sorted(methods.items()):
-            if value != 0:
-                print("{}: {}".format(key, value))
+except Exception as err:
+    pass
+
+finally:
+    print("File size: {}".format(total_size))
+    for key, value in sorted(methods.items()):
+        if value != 0:
+            print("{}: {}".format(key, value))
