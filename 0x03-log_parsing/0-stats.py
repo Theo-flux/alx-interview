@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-_summary_
+stats file
 """
 from typing import List, Union, Any
 import sys
@@ -42,6 +42,8 @@ def matchLine(arg: str) -> List[Any]:
 
 try:
     for line in sys.stdin:
+        if 'Exit' == line.rstrip():
+            break
         arg_list = matchLine(line)
 
         if len(arg_list) == 2:
