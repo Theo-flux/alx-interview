@@ -2,9 +2,10 @@
 """
 python file for lockboxes function
 """
+from typing import List, Union
 
 
-def canUnlockAll(boxes):
+def canUnlockAll(boxes: List[Union[List[int], List]]) -> bool:
     """
     method to determine if all boxes can be opened
 

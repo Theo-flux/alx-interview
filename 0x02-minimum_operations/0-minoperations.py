@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 min_operations file
 """
@@ -11,7 +11,6 @@ def minOperations(n) -> int:
         return min_op
 
     file_content = 'H'
-
 
     while len(file_content) < n:
         copyAll = file_content
