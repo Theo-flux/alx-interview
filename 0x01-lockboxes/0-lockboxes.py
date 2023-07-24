@@ -2,10 +2,9 @@
 """
 python file for lockboxes function
 """
-from typing import List, Union
 
 
-def canUnlockAll(boxes: List[Union[List[int], List]]) -> bool:
+def canUnlockAll(boxes):
     """
     method to determine if all boxes can be opened
 
@@ -15,25 +14,14 @@ def canUnlockAll(boxes: List[Union[List[int], List]]) -> bool:
     Returns:
         bool: return type
     """
-    length = len(boxes)
-    keys = set()
-    opened_boxes = []
-    i = 0
+    unlocked = set()
 
-    while i < length:
-        oldi = i
-        opened_boxes.append(i)
-        keys.update(boxes[i])
-        for key in keys:
-            if key != 0 and key < length and key not in opened_boxes:
-                i = key
-                break
-        if oldi != i:
-            continue
-        else:
-            break
-
-    for i in range(length):
-        if i not in opened_boxes and i != 0:
-            return False
-    return True
+    for id, box in enumerate(boxes):
+        if len(box) == 0 or id == 0:
+            unlocked.add(id)
+        for key in box:
+            if key < len(boxes) and key != id:
+                unlocked.add(key)
+        if len(unlocked) == len(boxes):
+            return True
+    return False
