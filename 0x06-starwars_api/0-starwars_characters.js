@@ -1,37 +1,34 @@
-#!/usr/bin/node
-const request = require('request')
+#!/usr/bin/env node
+const request = require('request');
 
-const peopleList = []
-let charactersUriList = []
-const id = process.argv[2]
-const filmUrl = `https://swapi-api.alx-tools.com/api/films/${id}`
+const id = process.argv[2];
+const filmUrl = `https://swapi-api.alx-tools.com/api/films/${id}`;
 
-request({uri: filmUrl, json: true}, (error, res) => {
-		if (error) {
-			console.log(error)
-		} else if (res.error) {
-			 console.log(res.error)
-		} else {
-			console.log(res.body['characters'])
-			charactersUriList = res.body['characters']
-		}
-	})
+function getRequest(uri, attr) {
+  const getPromise = new Promise((resolve, reject) => {
+    request({ uri: uri, json: true }, (error, res, body) => {
+      if (error) {
+        reject(error);
+      } else if (res.statusCode !== 200) {
+        reject(error);
+      } else {
+        resolve(body[`${attr}`]);
+      }
+    });
+  });
 
-async function getCharacter(uri){
-	await request({uri: uri, json: true}, (error, res) => {
-		if(error) {
-			console.log(error)
-		} else if (res.error) {
-			console.log(res.error)
-		} else {
-			peopleList.push(res.body['name'])
-		}
-	})
+  return getPromise;
 }
 
-charactersUriList.map(async (uri, _) => {
-	await getCharacter(uri)
-	return
-})
+async function getFilmById(uri, attr) {
+  return await getRequest(uri, attr);
+}
 
-console.log("await!",peopleList)
+async function getCharacters() {
+  charactersUriList = await getFilmById(filmUrl, 'characters');
+  for (const link of await charactersUriList) {
+    console.log(await getRequest(link, 'name'));
+  }
+}
+
+getCharacters();
