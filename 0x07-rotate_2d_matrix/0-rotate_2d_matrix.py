@@ -4,7 +4,7 @@ Rotate 2D Matrix module
 """
 
 
-def rotate_2d_matrix(matrix: list) -> None:
+def rotate_2d_matrix(matrix: lista) -> None:
     """
     rotate a 2 dimensional matrix
 
