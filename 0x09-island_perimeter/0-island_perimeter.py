@@ -11,25 +11,27 @@ def check_4_corners(i: int, j: int, grid: List[List]) -> int:
     right = 0
 
     # vertical check
-    if i == 0:
-        # if i is 1 don't update up only down
-        down = grid[i + 1][j]
-    elif i == len(grid) - 1:
-        # if i is last don't update down only up
-        up = grid[i - 1][j]
-    else:
-        up = grid[i - 1][j]
-        down = grid[i + 1][j]
+    if len(grid) > 1:
+        if i == 0:
+            # if i is 1 don't update up only down
+            down = grid[i + 1][j]
+        elif i == len(grid) - 1:
+            # if i is last don't update down only up
+            up = grid[i - 1][j]
+        else:
+            up = grid[i - 1][j]
+            down = grid[i + 1][j]
 
-    if j == 0:
-        # if j is 1 don't update left only right
-        right = grid[i][j + 1]
-    elif j == len(grid[i]) - 1:
-        # if j is last don't update right only left
-        left = grid[i][j - 1]
-    else:
-        left = grid[i][j - 1]
-        right = grid[i][j + 1]
+    if len(grid[i]) > 1:
+        if j == 0:
+            # if j is 1 don't update left only right
+            right = grid[i][j + 1]
+        elif j == len(grid[i]) - 1:
+            # if j is last don't update right only left
+            left = grid[i][j - 1]
+        else:
+            left = grid[i][j - 1]
+            right = grid[i][j + 1]
 
     return up + down + left + right
 
@@ -46,3 +48,9 @@ def island_perimeter(grid: List[List]) -> int:
                 perimeter = perimeter - checker
 
     return perimeter
+
+grid = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]
+# grid = [[1,0]]
+# grid = [[1]]
+
+print(island_perimeter(grid))
