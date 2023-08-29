@@ -4,7 +4,17 @@ from typing import List
 
 
 def check_4_corners(i: int, j: int, grid: List[List]) -> int:
-    pass
+    """
+    checks the four corners of a cell
+
+    Args:
+        i (int): _description_
+        j (int): _description_
+        grid (List[List]): _description_
+
+    Returns:
+        int: _description_
+    """
     up = 0
     down = 0
     left = 0
@@ -37,6 +47,15 @@ def check_4_corners(i: int, j: int, grid: List[List]) -> int:
 
 
 def island_perimeter(grid: List[List]) -> int:
+    """
+    maps out the perimeter of an island
+
+    Args:
+        grid (List[List]): _description_
+
+    Returns:
+        int: _description_
+    """
     perimeter = 0
     for i in range(0, len(grid)):
         for j in range(0, len(grid[i])):
