@@ -68,8 +68,9 @@ def island_perimeter(grid: List[List]) -> int:
 
     return perimeter
 
+
 if __name__ == '__main__':
-    grid = [[0,1,0,0],[1,1,1,0],[0,1,0,0],[1,1,0,0]]
+    grid = [[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
     # grid = [[1,0]]
     # grid = [[1]]
 
