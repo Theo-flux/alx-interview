@@ -1,9 +1,11 @@
 #!/usr/bin/python3
-"""island perimeter module"""
+"""
+island perimeter module
+"""
 from typing import List
 
 
-def check_4_corners(i: int, j: int, grid: List[List]) -> int:
+def check_4_corners(i: int, j: int, grid: List[List[int]]) -> int:
     """
     checks the four corners of a cell
 
@@ -46,7 +48,7 @@ def check_4_corners(i: int, j: int, grid: List[List]) -> int:
     return up + down + left + right
 
 
-def island_perimeter(grid: List[List]) -> int:
+def island_perimeter(grid: List[List[int]]) -> int:
     """
     maps out the perimeter of an island
 
@@ -67,11 +69,3 @@ def island_perimeter(grid: List[List]) -> int:
                 perimeter = perimeter - checker
 
     return perimeter
-
-
-if __name__ == '__main__':
-    grid = [[0, 1, 0, 0], [1, 1, 1, 0], [0, 1, 0, 0], [1, 1, 0, 0]]
-    # grid = [[1,0]]
-    # grid = [[1]]
-
-    print(island_perimeter(grid))
