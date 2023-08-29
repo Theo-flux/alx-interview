@@ -2,10 +2,9 @@
 """
 island perimeter module
 """
-from typing import List
 
 
-def check_4_corners(i: int, j: int, grid: List[List[int]]) -> int:
+def check_4_corners(i: int, j: int, grid) -> int:
     """
     checks the four corners of a cell
 
@@ -48,7 +47,7 @@ def check_4_corners(i: int, j: int, grid: List[List[int]]) -> int:
     return up + down + left + right
 
 
-def island_perimeter(grid: List[List[int]]) -> int:
+def island_perimeter(grid) -> int:
     """
     maps out the perimeter of an island
 
