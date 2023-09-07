@@ -3,6 +3,7 @@
 
 
 def is_prime(n):
+    """check for prime"""
     if n == 1:
         return False
     for i in range(2, n):
@@ -11,6 +12,7 @@ def is_prime(n):
 
 
 def get_multiples(n, arr):
+    """multiple of prime number"""
     multiples = []
     for i in arr:
         if (n % i) == 0 and i != 1:
