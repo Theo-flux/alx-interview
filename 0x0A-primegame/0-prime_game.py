@@ -19,15 +19,6 @@ def get_multiples(n, arr):
 
 
 def isWinner(x, nums) -> str:
-    """is winner function
-
-    Args:
-        x (int): number of rounds
-        nums (List[int]): array of n
-
-    Returns:
-        str: winner
-    """
     turn = 1
     maria_score = 0
     ben_score = 0
@@ -41,7 +32,6 @@ def isWinner(x, nums) -> str:
         if len(array) == 1:
             if is_prime(array[0]):
                 if turn % 2 != 0:
-                    # maria wins
                     m_wins = m_wins + 1
                 else:
                     b_wins = b_wins + 1
@@ -60,12 +50,11 @@ def isWinner(x, nums) -> str:
 
         if (m_wins > b_wins):
             maria_score = maria_score + 1
-        elif (m_wins < b_wins):
+        elif (b_wins > m_wins):
             ben_score = ben_score + 1
 
     if (maria_score > ben_score):
         return 'Maria'
-    elif (ben_score > maria_score):
+    if (ben_score > maria_score):
         return 'Ben'
-    else:
-        return None
+    return 'Ben'
