@@ -21,6 +21,16 @@ def get_multiples(n, arr):
 
 
 def isWinner(x, nums) -> str:
+    """
+    prime game winner
+
+    Args:
+        x (int): no of rounds
+        nums (_type_): array of n
+
+    Returns:
+        str: string or None
+    """
     turn = 1
     maria_score = 0
     ben_score = 0
